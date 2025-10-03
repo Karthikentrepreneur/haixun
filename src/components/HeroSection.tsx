@@ -1,37 +1,85 @@
-import React from "react";
-import { Users, UserCircle, SearchCode, Ship, Globe } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Users, UserCircle, SearchCode, Ship } from "lucide-react";
+
 const HeroSection: React.FC = () => {
-  const portalLinks = [{
-    icon: <Users className="w-5 h-5" />,
-    title: "Consolmate",
-    url: "https://consolmate.com/auth/login/5"
-  }, {
-    icon: <UserCircle className="w-5 h-5" />,
-    title: "Partner Portal",
-    url: "https://pp.onlinetracking.co/auth/login/5"
-  }, {
-    icon: <SearchCode className="w-5 h-5" />,
-    title: "Tracking",
-    url: "http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:102:::::P0_GROUP_RID:250"
-  }, {
-    icon: <Ship className="w-5 h-5" />,
-    title: "Container Enquiry",
-    url: "https://dubaitrade.ae/en/container-enquiry-introduction"
-  }];
-  return <section className="relative min-h-screen w-full overflow-hidden">
-      {/* Full-screen video with NO gradient overlay */}
-      <video className="absolute inset-0 w-full h-full object-cover" src="/hero5.mp4" // replace with your video
-    autoPlay loop muted playsInline />
+  const portalLinks = [
+    {
+      icon: <Users className="w-5 h-5" />,
+      title: "Consolmate",
+      url: "https://consolmate.com/auth/login/10",
+    },
+    {
+      icon: <UserCircle className="w-5 h-5" />,
+      title: "Partner Portal",
+      url: "https://pp.onlinetracking.co/auth/login/10",
+    },
+    {
+      icon: <SearchCode className="w-5 h-5" />,
+      title: "Tracking",
+      url: "http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:102:::::P0_GROUP_RID:195",
+    },
+    {
+      icon: <Ship className="w-5 h-5" />,
+      title: "Sailing Schedule",
+      url: "http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:104:::::P0_GROUP_RID:195",
+    },
+  ];
+
+  // === Hero images array ===
+  const heroImages = [
+    "/hero1.jpg",
+    "/hero2.jpg",
+    "/hero3.jpg",
+    "/hero4.jpg", // add or remove images as needed
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Auto-scroll every 5s
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
+  return (
+    <section className="relative min-h-screen w-full overflow-hidden">
+      {/* Background Image Slider */}
+      <div className="absolute inset-0 w-full h-full">
+        {heroImages.map((img, i) => (
+          <img
+            key={i}
+            src={img}
+            alt={`hero-${i}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              i === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+      </div>
 
       {/* Buttons Bar at the Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 z-10  bg-inherit">
+      <div className="absolute bottom-0 left-0 right-0 z-10 bg-inherit">
         <div className="max-w-7xl mx-auto px-4 py-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-          {portalLinks.map((link, i) => <a key={i} href={link.url} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-1 py-1 rounded-md bg-[#0b1f4d] text-white hover:bg-[#122a66] transition-transform transform hover:scale-105 shadow-md border border-white/10">
+          {portalLinks.map((link, i) => (
+            <a
+              key={i}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center justify-center gap-1 py-1 rounded-md bg-[#0b1f4d] text-white hover:bg-[#122a66] transition-transform transform hover:scale-105 shadow-md border border-white/10"
+            >
               <div className="p-2 bg-white/20 rounded-full">{link.icon}</div>
-              <span className="text-sm font-semibold text-center">{link.title}</span>
-            </a>)}
+              <span className="text-sm font-semibold text-center">
+                {link.title}
+              </span>
+            </a>
+          ))}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;
