@@ -29,7 +29,7 @@ const HeroSection: React.FC = () => {
   const heroImages = [
     "/truck.png",
     "/oceanfreight.png",
-    "/airfreight.png", // add or remove images as needed
+    "/airfreight.png", // replace with your uploaded image path if needed
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -43,15 +43,15 @@ const HeroSection: React.FC = () => {
   }, [heroImages.length]);
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
+    <section className="relative min-h-screen w-full overflow-hidden bg-black">
       {/* Background Image Slider */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full flex items-center justify-center">
         {heroImages.map((img, i) => (
           <img
             key={i}
             src={img}
             alt={`hero-${i}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ${
               i === currentIndex ? "opacity-100" : "opacity-0"
             }`}
           />
