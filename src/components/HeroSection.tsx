@@ -91,13 +91,13 @@ const HeroSection: React.FC = () => {
       {/* === LEFT CENTER CONTENT BELOW LOGO === */}
       <div className="absolute top-1/2 left-12 -translate-y-1/2 z-20 max-w-xl pr-6 text-left mx-[304px]">
         <h1 style={{
-        color: '#FFFFFF'
-      }} className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-md text-slate-50">
+        color: '#BC0018'
+      }} className="text-3xl sm:text-5xl font-extrabold leading-tight drop-shadow-md text-slate-50 md:text-4xl">
           Welcome to Haixun
         </h1>
-        <p className="mt-4 sm:mt-5 text-base sm:text-lg md:text-xl leading-relaxed" style={{
+        <p style={{
         color: '#CFC9CA'
-      }}>
+      }} className="mt-4 sm:mt-5 text-base sm:text-lg leading-relaxed md:text-lg">
           Haixun Global Co., Ltd. headquartered in Shenzhen, China. Its business scope covers the sea, land and air
           transportation agency business of global LCL, FCL, bulk cargo, etc...
         </p>
