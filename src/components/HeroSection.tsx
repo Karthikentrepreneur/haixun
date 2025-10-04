@@ -91,7 +91,7 @@ const HeroSection: React.FC = () => {
       {/* === LEFT CENTER CONTENT BELOW LOGO === */}
       <div className="absolute top-1/2 left-12 -translate-y-1/2 z-20 max-w-xl pr-6 text-left mx-[304px]">
         <h1 style={{
-        color: '#BC0018'
+        color: '#FFFFFF'
       }} className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-md text-slate-50">
           Welcome to Haixun
         </h1>
