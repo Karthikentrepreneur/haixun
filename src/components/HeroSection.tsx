@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Users, UserCircle, SearchCode, Ship, ChevronLeft, ChevronRight } from "lucide-react";
 
 const HeroSection: React.FC = () => {
-  // === Config ===
   const portalLinks = useMemo(
     () => [
       { icon: <Users className="w-5 h-5" />, title: "Consolmate", url: "https://consolmate.com/auth/login/10" },
@@ -13,27 +12,22 @@ const HeroSection: React.FC = () => {
     []
   );
 
-  // Background assets
   const heroImages = useMemo(() => ["/oceanfreight.png", "/airfreight.png", "/truck.png"], []);
-  const videoMp4 = "/hero1.mp4"; // put file in /public
-  const videoWebm = "/hero1.webm"; // optional, if you have it
-  const videoPoster = "/hero-poster.jpg"; // optional poster frame while loading
+  const videoMp4 = "/hero1.mp4";
+  const videoWebm = "/hero1.webm";
+  const videoPoster = "/hero-poster.jpg";
 
-  // Slider state (used for fallback images)
   const [index, setIndex] = useState(0);
   const [loaded, setLoaded] = useState<boolean[]>(() => heroImages.map(() => false));
   const [autoPlay, setAutoPlay] = useState(true);
 
-  // Video state
   const [useVideo, setUseVideo] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  // Respect reduced motion
   const prefersReducedMotion = useRef<boolean>(
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   ).current;
 
-  // Preload fallback images
   useEffect(() => {
     const imgs = heroImages.map((src, i) => {
       const img = new Image();
@@ -49,7 +43,6 @@ const HeroSection: React.FC = () => {
     return () => imgs.forEach((img) => (img.onload = null));
   }, [heroImages]);
 
-  // Fallback image autoplay
   useEffect(() => {
     if (prefersReducedMotion || !autoPlay || useVideo) return;
     const id = setInterval(() => {
@@ -58,7 +51,6 @@ const HeroSection: React.FC = () => {
     return () => clearInterval(id);
   }, [heroImages.length, prefersReducedMotion, autoPlay, useVideo]);
 
-  // Try to play video; fall back to images if blocked
   useEffect(() => {
     if (prefersReducedMotion) {
       setUseVideo(false);
@@ -74,7 +66,6 @@ const HeroSection: React.FC = () => {
     };
     tryPlay();
 
-    // Pause when tab hidden
     const onVis = () => {
       if (!videoRef.current) return;
       if (document.hidden) videoRef.current.pause();
@@ -95,7 +86,6 @@ const HeroSection: React.FC = () => {
 
   return (
     <section className="relative h-[100svh] w-full overflow-hidden">
-      {/* === BACKDROP LAYER === */}
       <div className="absolute inset-0">
         {useVideo ? (
           <video
@@ -108,7 +98,6 @@ const HeroSection: React.FC = () => {
             preload="auto"
             poster={videoPoster}
           >
-            {/* WebM first if available */}
             <source src={videoWebm} type="video/webm" />
             <source src={videoMp4} type="video/mp4" />
           </video>
@@ -129,7 +118,6 @@ const HeroSection: React.FC = () => {
         )}
       </div>
 
-      {/* Overlays */}
       <div className="absolute inset-0 bg-black/40" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
@@ -152,7 +140,6 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Prev / Next arrows (hidden when video is active) */}
       {!useVideo && (
         <>
           <button
@@ -172,7 +159,6 @@ const HeroSection: React.FC = () => {
         </>
       )}
 
-      {/* Dots (hidden when video is active) */}
       {!useVideo && (
         <div className="absolute bottom-28 left-0 right-0 z-20 flex items-center justify-center gap-2">
           {heroImages.map((_, i) => (
@@ -191,7 +177,6 @@ const HeroSection: React.FC = () => {
         </div>
       )}
 
-      {/* Buttons Bar */}
       <div className="absolute bottom-8 left-0 right-0 z-20">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-3 px-4 sm:grid-cols-4">
           {portalLinks.map((link, i) => (
@@ -209,10 +194,7 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Subtle frame */}
       <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10" />
-
-      {/* Shimmer while first image loads (fallback only) */}
       {!useVideo && !loaded[0] && <div className="absolute inset-0 z-0 animate-pulse bg-neutral-900" aria-hidden />}
     </section>
   );
