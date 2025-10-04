@@ -121,8 +121,8 @@ const HeroSection: React.FC = () => {
       <div className="absolute inset-0 bg-black/40" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
-      {/* === CENTERED CONTENT === */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 max-w-3xl px-6 text-center">
+      {/* === LEFT CENTER CONTENT BELOW LOGO === */}
+      <div className="absolute top-1/2 left-12 -translate-y-1/2 z-20 max-w-xl pr-6 text-left">
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-md" style={{ color: '#BC0018' }}>
           Welcome to Haixun
         </h1>
@@ -130,7 +130,7 @@ const HeroSection: React.FC = () => {
           Haixun Global Co., Ltd. headquartered in Shenzhen, China. Its business scope covers the sea, land and air
           transportation agency business of global LCL, FCL, bulk cargo, etc...
         </p>
-        <div className="mt-7 flex items-center justify-center">
+        <div className="mt-7 flex items-start">
           <a
             href="#about"
             className="inline-flex items-center justify-center rounded-xl bg-white/95 px-6 py-3 text-sm font-semibold text-black shadow-lg shadow-black/30 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/80"
