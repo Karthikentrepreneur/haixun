@@ -57,9 +57,9 @@ const AboutSection: React.FC = () => {
 
           
 
-          <p className="mt-5 text-gray-700 max-w-xl">Haixun Global Shenzhen, leverages over 30 years of expertise in logistics, including sea, land, air transportation, customs declaration, warehousing, and distribution, the Group has expanded its network to regions such as China, India, Malaysia, the UAE, and beyond.</p>
+          <p className="mt-5 text-gray-700 max-w-xl"><strong>Haixun Global Shenzhen</strong>, leverages over 30 years of expertise in logistics, including sea, land, air transportation, customs declaration, warehousing, and distribution, the Group has expanded its network to regions such as <strong>China, India, Malaysia, the UAE,</strong> and beyond.</p>
 
-<p className="mt-5 text-gray-700 max-w-xl">Established in 2019, Haixun Global Shenzhen upholds the Group’s commitment to integrity, customer satisfaction, and rapid response, ensuring a reliable and customer-focused service experience in China</p>
+<p className="mt-5 text-gray-700 max-w-xl">Established in <strong>2019</strong>,, Haixun Global Shenzhen upholds the Group’s commitment to integrity, customer satisfaction, and rapid response, ensuring a reliable and customer-focused service experience in China</p>
 
           {/* Feature list */}
           <div className="mt-8 space-y-7">
