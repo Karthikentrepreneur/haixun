@@ -28,20 +28,13 @@ const AboutSection: React.FC = () => {
             {/* Right image, lowered a bit and slightly overlapping to "connect" */}
             <img src="/truck1.png" alt="Logistics truck" className="rounded-xl shadow-xl object-cover w-full h-[320px] md:h-[380px] lg:h-[420px] mt-8 -ml-2" />
 
-{/* Centered round logo bridging between the two images */}
-<div
-className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center w-24 h-24 md:w-28 md:h-28 rounded-full bg-white shadow-2xl border-4"
-style={{ borderColor: ACCENT }}
->
-<img
-src="/haixun-logo.svg" // <-- replace with your actual logo path
-alt="Haixun Logo"
-className="w-12 h-12 object-contain"
-/>
-<p className="text-[10px] mt-1 font-semibold tracking-wide" style={{ color: ACCENT }}>
-Established in 2019
-</p>
-</div>
+            {/* Centered round logo bridging between the two images */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-28 h-28 md:w-32 md:h-32 rounded-full bg-white shadow-2xl border-4" style={{
+            borderColor: ACCENT
+          }}>
+              <img src="/haixun-logo.svg" // <-- replace with your actual logo path
+            alt="Haixun Logo" className="w-16 h-16 object-contain" />
+            </div>
 
             {/* Red phone icon badge over photos (per reference) */}
             
