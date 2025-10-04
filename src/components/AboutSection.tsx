@@ -33,7 +33,7 @@ const AboutSection: React.FC = () => {
             borderColor: ACCENT
           }}>
               <img src="/haixun-logo.svg" // <-- replace with your actual logo path
-            alt="Haixun Logo" className="w-16 h-16 object-contain" />
+            alt="Haixun Logo" className="w-20 h-20 object-contain" />
             </div>
 
             {/* Red phone icon badge over photos (per reference) */}
