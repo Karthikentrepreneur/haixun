@@ -35,7 +35,7 @@ export default function HaixunServicesSection() {
     },
     {
       icon: Ship,
-      image: "/images/services/fcl.jpg",
+      image: "truck1.png",
       titleKey: "services.fcl.title",
       descriptionKey: "services.fcl.description",
       link: "/services",
