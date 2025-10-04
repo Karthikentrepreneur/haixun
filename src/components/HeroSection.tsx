@@ -89,7 +89,7 @@ const HeroSection: React.FC = () => {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
       {/* === LEFT CENTER CONTENT BELOW LOGO === */}
-      <div className="absolute top-1/2 left-12 -translate-y-1/2 z-20 max-w-xl pr-6 text-left mx-[304px]">
+      <div className="absolute top-1/2 left-12 -translate-y-1/2 z-20 max-w-xl pr-6 text-left mx-[254px]">
         <h1 style={{
         color: '#FFFFFF'
       }} className="text-3xl sm:text-5xl font-extrabold leading-tight drop-shadow-md text-slate-50 md:text-4xl">
