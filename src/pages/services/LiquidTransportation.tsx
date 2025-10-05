@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Droplets } from "lucide-react";
+import { Droplets, Shield, Truck, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const LiquidTransportation = () => {
   useEffect(() => {
