@@ -1,362 +1,83 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Send, Building2, CheckCircle2 } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import {
+  PiggyBank,
+  Heart,
+  Target,
+  Settings,
+  Users,
+  Truck,
+  type LucideIcon,
+} from "lucide-react";
+import { useTranslation } from "react-i18next";
+import ScrollAnimation from "./ScrollAnimation";
 
-// Brand Colors
-const BRAND = {
-  blue: "#2563eb",
-  red: "#dc2626",
-  gold: "#dc2626", // using red as accent for Amass
-  black: "#111",
+type Advantage = {
+  icon: LucideIcon;
+  titleKey: string;
+  descriptionKey: string;
 };
 
-// Master office list
-const allOffices: Record<
-  string,
-  Array<{
-    name: string;
-    address: string; // with \n
-    phones?: string[];
-    fax?: string;
-    emails?: string[];
-  }>
-> = {
-  UAE: [
-    {
-      name: "Head Office",
-      address: "202, Sultan Business Centre\nOud Metha, P.O. Box 33463\nDubai – UAE",
-      phones: ["+971 4 3575508"],
-      fax: "+971 4 2221794",
-      emails: ["contact@dxb.amassfreight.com"],
-    },
-    {
-      name: "CFS",
-      address: "Plot No S20312,\nJafza South,\nJebel Ali, Dubai – UAE",
-      phones: ["+971 4 3400298", "+971 4 3575508"],
-      fax: "+971 4 8831004",
-      emails: ["contact@dxb.amassfreight.com"],
-    },
-  ],
+export default function AdvantagesSection() {
+  const { t } = useTranslation();
 
-  China: [
-    {
-      name: "Shanghai – Head Office",
-      address: "21-22F, NO.1089, Dongdaming Road,\nHongkou, Shanghai, P.R.C.",
-      phones: ["+86 18121430682"],
-      emails: ["ec@amassfreight.com"],
-    },
-  ],
-
-  "Saudi Arabia": [
-    {
-      name: "Dammam – Head Office",
-      address:
-        "Rashidiya Business Center\nBuild No: 7257 Room 308, 3rd Floor – Al Amamrah\nDammam – 32415 – KSA",
-      phones: ["+966 13 849 8637"],
-      emails: ["contact@dxb.amassfreight.com"],
-    },
-    {
-      name: "Jeddah",
-      address:
-        "Room No. 408, Saudi Business Centre\n7859 Al Madinah Al Munawarah Road\nAl Sharafeyah, Jeddah 4542-22234",
-      phones: ["+966 12 578 0874"],
-      emails: ["contact@dxb.amassfreight.com"],
-    },
-    {
-      name: "Riyadh",
-      address:
-        "Room No. 20, Al Malaz\nBldg. No. 104, 2nd Floor, Al Qirawani St.\nAl Malaz District, Riyadh 11332, K.S.A",
-      phones: ["+966 13 849 8630"],
-      emails: ["contact@dxb.amassfreight.com"],
-    },
-  ],
-};
-
-const locationOptions = Object.keys(allOffices);
-
-const ContactForm: React.FC = () => {
-  const location = useLocation();
-  const [selectedLocation, setSelectedLocation] = useState(locationOptions[0]);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const formRef = useRef<HTMLFormElement | null>(null);
-
-  const getCurrentCountry = () => {
-    const path = location.pathname.toLowerCase();
-    if (path.includes("/saudi")) return "Saudi Arabia";
-    if (path.includes("/china")) return "China";
-    return "UAE";
-  };
-
-  useEffect(() => {
-    setSelectedLocation(getCurrentCountry());
-  }, [location.pathname]);
-
-  // Build prioritized list: selected location first, then others — capped at 6 so KSA Riyadh isn't dropped
-  const topFourOffices = useMemo(() => {
-    const withCountry = Object.entries(allOffices).flatMap(([country, offices]) =>
-      offices.map((o) => ({ ...o, country }))
-    );
-    const primary = withCountry.filter((o) => o.country === selectedLocation);
-    const others = withCountry.filter((o) => o.country !== selectedLocation);
-    return [...primary, ...others].slice(0, 6);
-  }, [selectedLocation]);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    // Send to BOTH recipients
-    const emails = [
-      "contact@dxb.amassfreight.com",
-    ];
-
-    try {
-      await Promise.all(
-        emails.map((email) =>
-          fetch(`https://formsubmit.co/ajax/${email}`, {
-            method: "POST",
-            headers: { Accept: "application/json" },
-            body: formData,
-          })
-        )
-      );
-
-      form.reset();
-      setShowSuccess(true);
-      setTimeout(() => setShowSuccess(false), 5000);
-    } catch (err: any) {
-      alert("Something went wrong: " + (err?.message || "Unknown error"));
-    }
-  };
+  const advantages: Advantage[] = [
+    { icon: PiggyBank, titleKey: "advantages.savetime.title",    descriptionKey: "advantages.savetime.description" },
+    { icon: Heart,     titleKey: "advantages.health.title",      descriptionKey: "advantages.health.description" },
+    { icon: Target,    titleKey: "advantages.focus.title",       descriptionKey: "advantages.focus.description" },
+    { icon: Settings,  titleKey: "advantages.productivity.title",descriptionKey: "advantages.productivity.description" },
+    { icon: Users,     titleKey: "advantages.stressfree.title",  descriptionKey: "advantages.stressfree.description" },
+    { icon: Truck,     titleKey: "advantages.balance.title",     descriptionKey: "advantages.balance.description" },
+  ];
 
   return (
-    <section id="contact" className="py-16 bg-slate-50">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: BRAND.blue }}>
-            Get In Touch
+        <ScrollAnimation className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-semibold text-blue-900 mb-3">
+            {t("advantages.title")}
           </h2>
-          <div className="w-24 h-1 mx-auto mb-4" style={{ background: BRAND.gold }} />
-          <p className="max-w-2xl mx-auto text-lg" style={{ color: BRAND.black }}>
-            Ready to streamline your logistics? Contact us today for a customized solution.
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            {t("advantages.subtitle")}
           </p>
-        </motion.div>
+        </ScrollAnimation>
 
-        {/* Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* ===== Office List (Only up to 6 addresses) ===== */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold flex items-center gap-2" style={{ color: BRAND.blue }}>
-              <Building2 className="w-6 h-6" style={{ color: BRAND.gold }} />
-              Our Offices
-            </h3>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {topFourOffices.map((office, idx) => (
-                <motion.div
-                  key={`${office.country}-${office.name}-${idx}`}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35 }}
-                  viewport={{ once: true }}
-                  className="p-5 rounded-xl shadow-md border bg-white"
-                  style={{ borderColor: BRAND.gold }}
+        {/* Cards (3x2 like screenshot) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+          {advantages.map((adv, i) => {
+            const Icon = adv.icon;
+            return (
+              <ScrollAnimation key={adv.titleKey} delay={i * 80}>
+                <motion.article
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  className="w-full max-w-[360px] bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 text-center p-8"
                 >
-                  <div className="flex items-center justify-between mb-2">
-                    <h5 className="text-base font-semibold flex items-center gap-2" style={{ color: BRAND.blue }}>
-                      <span className="w-2.5 h-2.5 rounded-full" style={{ background: BRAND.gold }} />
-                      {office.name}
-                    </h5>
-                    <span
-                      className="text-[11px] px-2 py-0.5 rounded-full"
-                      style={{ border: `1px solid ${BRAND.gold}`, color: BRAND.black, background: "#fff" }}
-                    >
-                      {office.country}
-                    </span>
+                  <div className="w-16 h-16 rounded-full bg-red-50 flex items-center justify-center mx-auto mb-6 shadow-inner">
+                    <Icon className="w-8 h-8 text-red-500" aria-hidden="true" />
                   </div>
 
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <MapPin className="w-5 h-5" style={{ color: BRAND.gold }} />
-                      <p className="text-sm whitespace-pre-line" style={{ color: BRAND.black }}>
-                        {office.address}
-                      </p>
-                    </div>
-
-                    {office.phones?.map((phone, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <Phone className="w-5 h-5" style={{ color: BRAND.gold }} />
-                        <a
-                          href={`tel:${phone.replace(/[^+\d]/g, "")}`}
-                          className="text-sm hover:underline"
-                          style={{ color: BRAND.black }}
-                        >
-                          {phone}
-                        </a>
-                      </div>
-                    ))}
-
-                    {office.fax && (
-                      <div className="flex items-center gap-3">
-                        <Phone className="w-5 h-5" style={{ color: BRAND.gold }} />
-                        <span className="text-sm" style={{ color: BRAND.black }}>
-                          Fax: {office.fax}
-                        </span>
-                      </div>
-                    )}
-
-                    {office.emails?.map((email, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <Mail className="w-5 h-5" style={{ color: BRAND.gold }} />
-                        <a href={`mailto:${email}`} className="text-sm hover:underline" style={{ color: BRAND.black }}>
-                          {email}
-                        </a>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* ===== Form ===== */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="p-8 rounded-2xl shadow-xl border"
-            style={{ borderColor: BRAND.gold, background: "#fff" }}
-          >
-            <h3 className="text-2xl font-bold mb-6" style={{ color: BRAND.blue }}>
-              Send us a Message
-            </h3>
-            <p className="mb-6" style={{ color: BRAND.black }}>
-              Fill out the form below and we'll get back to you within 24 hours.
-            </p>
-
-            <form onSubmit={handleSubmit} ref={formRef} className="space-y-6">
-              {/* FormSubmit hidden fields */}
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="box" />
-              <input type="hidden" name="_subject" value={`New Contact Submission from ${selectedLocation}`} />
-              <input type="hidden" name="Preferred_Location" value={selectedLocation} />
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium" style={{ color: BRAND.black }}>
-                    First Name *
-                  </label>
-                  <Input placeholder="Enter your first name" name="First Name" required />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium" style={{ color: BRAND.black }}>
-                    Last Name *
-                  </label>
-                  <Input placeholder="Enter your last name" name="Last Name" required />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium" style={{ color: BRAND.black }}>
-                    Email Address *
-                  </label>
-                  <Input type="email" name="Email" placeholder="Enter your email" required />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium" style={{ color: BRAND.black }}>
-                    Phone Number
-                  </label>
-                  <Input name="Phone" placeholder="Enter your phone number" />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium" style={{ color: BRAND.black }}>
-                  Company/Organization
-                </label>
-                <Input name="Organization" placeholder="Enter your company name" />
-              </div>
-
-              {/* Preferred Office Location (Select) */}
-              <div className="space-y-2 max-w-md mx-auto p-4 rounded-lg shadow" style={{ background: "#fff" }}>
-                <label className="text-sm font-medium" style={{ color: BRAND.black }}>
-                  Preferred Office Location
-                </label>
-                <Select value={selectedLocation} onValueChange={setSelectedLocation}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select office location" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {locationOptions.map((loc) => (
-                      <SelectItem key={loc} value={loc}>
-                        {loc}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium" style={{ color: BRAND.black }}>
-                  Message *
-                </label>
-                <Textarea name="Message" placeholder="Tell us about your logistics needs..." required rows={5} />
-              </div>
-
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Button
-                  type="submit"
-                  style={{
-                    width: "100%",
-                    background: BRAND.blue,
-                    color: "#fff",
-                    padding: "1.5rem 0",
-                    fontSize: "1.125rem",
-                    fontWeight: 600,
-                    borderRadius: "1rem",
-                    border: `2px solid ${BRAND.gold}`,
-                  }}
-                >
-                  <Send className="w-5 h-5 mr-2" style={{ color: BRAND.gold }} />
-                  Send Message
-                </Button>
-              </motion.div>
-
-              {showSuccess && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="mt-6 p-4 rounded-xl shadow flex items-center gap-3"
-                  style={{ background: "#fff", border: `1px solid ${BRAND.gold}`, color: BRAND.black }}
-                >
-                  <CheckCircle2 className="w-5 h-5" style={{ color: BRAND.blue }} />
-                  <p className="text-sm md:text-base font-medium">
-                    Your message has been sent successfully. We'll get back to you soon!
+                  <h3 className="text-lg font-bold text-blue-900 mb-2">
+                    {t(adv.titleKey)}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {t(adv.descriptionKey)}
                   </p>
-                </motion.div>
-              )}
-            </form>
-          </motion.div>
+                </motion.article>
+              </ScrollAnimation>
+            );
+          })}
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mt-14">
+          <button
+            type="button"
+            className="px-8 py-3 rounded-full border border-red-500 text-red-600 font-medium hover:bg-red-500 hover:text-white transition-all duration-300 shadow-sm"
+          >
+            {t("advantages.cta")}
+          </button>
         </div>
       </div>
     </section>
   );
-};
-
-export default ContactForm;
+}
