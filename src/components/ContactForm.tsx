@@ -161,7 +161,7 @@ export default function ContactUsSection() {
         once: true
       }} className="flex justify-center items-center">
           <div className="w-full max-w-md">
-            <img src="/contact.jpg" alt="Haixun contact representative" className=" object-cover w-full h-full" />
+            <img src="/contact.png" alt="Haixun contact representative" className=" object-cover w-full h-full" />
           </div>
         </motion.div>
       </div>
