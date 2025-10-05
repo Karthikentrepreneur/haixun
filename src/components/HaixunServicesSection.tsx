@@ -40,6 +40,7 @@ export default function HaixunServicesSection() {
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
+        {/* Section Header */}
         <ScrollAnimation className="text-center mb-14">
           <h2 className="font-bold text-gray-900 text-4xl md:text-5xl mb-4">
             {t("services.title")}
@@ -60,7 +61,7 @@ export default function HaixunServicesSection() {
                     whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
                     className="bg-gray-50 rounded-2xl border border-gray-200 hover:border-red-600 transition-all duration-300 h-full group cursor-pointer overflow-hidden"
                   >
-                    {/* Image header */}
+                    {/* Image with Icon on top-right */}
                     <div className="relative w-full aspect-[16/9] overflow-hidden">
                       <img
                         src={service.image}
@@ -69,21 +70,21 @@ export default function HaixunServicesSection() {
                         loading="lazy"
                       />
                       <div className="absolute inset-0 bg-black/15 group-hover:bg-black/10 transition-colors" />
+                      
+                      {/* Icon Badge (Top Right Corner) */}
+                      <div className="absolute top-3 right-3 w-11 h-11 bg-red-600 rounded-lg flex items-center justify-center shadow-md">
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
                     </div>
 
                     {/* Content */}
                     <div className="p-6">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Icon className="w-5 h-5 text-red-600" />
-                        <h3 className="text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">
-                          {t(service.titleKey)}
-                        </h3>
-                      </div>
-
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+                        {t(service.titleKey)}
+                      </h3>
                       <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
                         {t(service.descriptionKey)}
                       </p>
-
                       <div className="mt-4 text-red-600 font-medium text-sm group-hover:underline">
                         {t("services.readMore")} →
                       </div>
