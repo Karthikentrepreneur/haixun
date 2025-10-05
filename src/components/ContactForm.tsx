@@ -25,7 +25,7 @@ export default function ContactUsSection() {
     }
   };
   return <section className="py-20 bg-[#f9fafb]">
-      <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
         {/* LEFT COLUMN - CONTACT INFO */}
         <motion.div initial={{
         opacity: 0,
