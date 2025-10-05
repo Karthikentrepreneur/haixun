@@ -188,7 +188,7 @@ export default function ContactUsSection() {
         >
           <div className="w-full max-w-md">
             <img
-              src="/contact-person.jpg"
+              src="/contact.png"
               alt="Haixun contact representative"
               className="rounded-2xl shadow-lg object-cover w-full h-full"
             />
