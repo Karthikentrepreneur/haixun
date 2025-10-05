@@ -23,8 +23,7 @@ const Footer = () => {
       offices: [
         {
           name: "Shenzhen Office",
-          address:
-            "13C02, Block A,\nZhaoxin Huijin Plaza 3085 Shennan East Road,\nLuohu, Shenzhen.",
+          address: "13C02, Block A,\nZhaoxin Huijin Plaza 3085 Shennan East Road,\nLuohu, Shenzhen.",
           phone: "+86 75582222447",
           fax: "+86 75582192854",
           email: "helen@haixun.co",
@@ -43,15 +42,13 @@ const Footer = () => {
       c.offices.map((o) => ({ ...o, country: c.country }))
     );
     const current = getCurrentCountry();
-    return [
-      ...all.filter((o) => o.country === current),
-      ...all.filter((o) => o.country !== current),
-    ];
+    return [...all.filter(o => o.country === current), ...all.filter(o => o.country !== current)];
   }, [location.pathname]);
 
   // One-by-one vertical slider
   const [idx, setIdx] = useState(0);
   const [paused, setPaused] = useState(false);
+  const dirRef = useRef<1 | -1>(1); // (kept if you later want bi-direction)
 
   const intervalMs = 4000;
   const slideMs = 450;
@@ -72,24 +69,12 @@ const Footer = () => {
 
   const footerAnim = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   return (
-    <footer
-      className="relative pt-16 pb-8 text-white bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: "url('/bluebg.png')",
-      }}
-    >
-      {/* Optional Overlay for better contrast */}
-      <div className="absolute inset-0 bg-blue-950/80" />
-
-      <div className="relative container mx-auto px-4">
+    <footer className="pt-16 pb-8 text-white bg-blue-950">
+      <div className="container mx-auto px-4">
         <div className="h-1 bg-gradient-to-r from-gc-gold via-gc-light-gold to-gc-gold rounded-full mb-8" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 lg:gap-4">
@@ -113,9 +98,7 @@ const Footer = () => {
               Haixun Global Co., Ltd
             </h3>
             <p className="text-sm md:text-base max-w-xs text-left leading-relaxed mb-4 text-slate-50">
-              Leveraging over 30 years of expertise in logistics, including sea,
-              land, air transportation, customs declaration, warehousing, and
-              distribution.
+              Leveraging over 30 years of expertise in logistics, including sea, land, air transportation, customs declaration, warehousing, and distribution.
             </p>
           </motion.div>
 
@@ -174,7 +157,7 @@ const Footer = () => {
 
             {/* Viewport */}
             <div
-              className="relative h-[168px] overflow-hidden"
+              className="relative h-[168px] overflow-hidden" // ~fits 1 card height; tweak as needed
               onMouseEnter={() => setPaused(true)}
               onMouseLeave={() => setPaused(false)}
               onTouchStart={() => setPaused(true)}
@@ -194,10 +177,7 @@ const Footer = () => {
                   </p>
 
                   <div className="flex items-start gap-2">
-                    <MapPin
-                      size={16}
-                      className="text-gc-gold mt-1 flex-shrink-0"
-                    />
+                    <MapPin size={16} className="text-gc-gold mt-1 flex-shrink-0" />
                     <p className="whitespace-pre-line text-sm leading-relaxed text-slate-50">
                       {current.address}
                     </p>
@@ -232,9 +212,7 @@ const Footer = () => {
                   key={i}
                   onClick={() => setIdx(i)}
                   className={`w-2 h-2 rounded-full transition-colors ${
-                    i === idx
-                      ? "bg-gc-gold"
-                      : "bg-white/30 hover:bg-white/50"
+                    i === idx ? "bg-gc-gold" : "bg-white/30 hover:bg-white/50"
                   }`}
                   aria-label={`Go to office ${i + 1}`}
                 />
