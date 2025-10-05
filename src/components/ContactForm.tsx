@@ -28,19 +28,21 @@ export default function ContactUsSection() {
 
   return (
     <section className="py-20 bg-[#f9fafb]">
-      <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        {/* LEFT SIDE */}
+      <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+        {/* LEFT COLUMN - CONTACT INFO */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
+          className="space-y-8"
         >
-          <h2 className="text-4xl font-extrabold text-gray-900 mb-6">
+          <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
             Contact Us
           </h2>
-          <p className="text-gray-700 text-lg max-w-md mb-10 leading-relaxed">
-            Need to get in touch? <span className="text-red-600 font-semibold">No problem!</span> 
+          <p className="text-gray-700 text-lg max-w-md leading-relaxed">
+            Need to get in touch?{" "}
+            <span className="text-red-600 font-semibold">No problem!</span>{" "}
             You can use our contact form to send us a message.
           </p>
 
@@ -55,7 +57,8 @@ export default function ContactUsSection() {
                   Our Office Address
                 </h4>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  13C02, Block A, Zhaoxin Huijin Plaza<br />
+                  13C02, Block A, Zhaoxin Huijin Plaza
+                  <br />
                   3085 Shennan East Road, Luohu, Shenzhen.
                 </p>
               </div>
@@ -95,10 +98,10 @@ export default function ContactUsSection() {
           </div>
         </motion.div>
 
-        {/* RIGHT SIDE FORM */}
+        {/* CENTER COLUMN - CONTACT FORM */}
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="bg-white p-10 rounded-2xl shadow-lg border border-gray-100"
@@ -173,6 +176,23 @@ export default function ContactUsSection() {
               </p>
             )}
           </form>
+        </motion.div>
+
+        {/* RIGHT COLUMN - IMAGE */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex justify-center items-center"
+        >
+          <div className="w-full max-w-md">
+            <img
+              src="/contact-person.jpg"
+              alt="Haixun contact representative"
+              className="rounded-2xl shadow-lg object-cover w-full h-full"
+            />
+          </div>
         </motion.div>
       </div>
     </section>
