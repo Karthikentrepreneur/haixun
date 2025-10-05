@@ -3,7 +3,7 @@ import type { LucideIcon } from "lucide-react";
 import {
   Ship,
   Boxes,
-  Warehouse,
+  Warehouse as WarehouseIcon,
   Package,
   Plane,
   FileCheck,
@@ -26,61 +26,77 @@ export default function HaixunServicesSection() {
   const { t } = useTranslation();
 
   const services: Service[] = [
+    // LCL
     {
       icon: Boxes,
-      image: "/images/services/lcl.jpg",
+      image: "/lcl.png",
       titleKey: "services.lcl.title",
       descriptionKey: "services.lcl.description",
       link: "/services/lcl",
     },
+    // FCL
     {
       icon: Ship,
-      image: "truck1.png",
+      image: "/fcl.png",
       titleKey: "services.fcl.title",
       descriptionKey: "services.fcl.description",
-      link: "/services",
+      link: "/services/fcl",
     },
+    // Warehouse
     {
-      icon: Warehouse,
-      image: "/images/services/warehouse.jpg",
+      icon: WarehouseIcon,
+      image: "/warehouse.png",
       titleKey: "services.warehouse.title",
       descriptionKey: "services.warehouse.description",
-      link: "/services",
+      link: "/services/warehouse",
     },
+    // Project Logistics
     {
       icon: Package,
-      image: "/images/services/project.jpg",
+      image: "/projectlogistics.png",
       titleKey: "services.project.title",
       descriptionKey: "services.project.description",
-      link: "/services",
+      link: "/services/project-logistics",
     },
+    // Air Shipments
     {
       icon: Plane,
-      image: "/images/services/air.jpg",
+      image: "/airfreight.png",
       titleKey: "services.air.title",
       descriptionKey: "services.air.description",
-      link: "/services",
+      link: "/services/air",
     },
+    // Customs
     {
       icon: FileCheck,
-      image: "/images/services/customs.jpg",
+      image: "/customclearance.png",
       titleKey: "services.customs.title",
       descriptionKey: "services.customs.description",
-      link: "/services",
+      link: "/services/customs",
     },
+    // Import
     {
       icon: ArrowDownToLine,
-      image: "/images/services/import.jpg",
+      image: "/Aircargo.png",
       titleKey: "services.import.title",
       descriptionKey: "services.import.description",
-      link: "/services",
+      link: "/services/import",
     },
+    // LCL Consolidation
     {
-      icon: Container,
-      image: "/images/services/consolidation.jpg",
+      icon: Boxes,
+      image: "/lclconsoldation.png",
       titleKey: "services.consolidation.title",
       descriptionKey: "services.consolidation.description",
-      link: "/services/lcl",
+      link: "/services/lcl-consolidation",
+    },
+    // OOG Shipments
+    {
+      icon: Container,
+      image: "/oog.png",
+      titleKey: "services.oog.title",
+      descriptionKey: "services.oog.description",
+      link: "/services/oog",
     },
   ];
 
