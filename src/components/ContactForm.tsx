@@ -28,7 +28,12 @@ export default function ContactUsSection() {
   };
 
   return (
-    <section className="py-20 bg-[#f9fafb]">
+    <section
+      className="py-20"
+      style={{
+        background: "linear-gradient(to bottom, #F5EAEA 0%, #E0A6A6 40%, #9B111E 100%)",
+      }}
+    >
       <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
         {/* LEFT COLUMN - CONTACT INFO */}
         <motion.div
@@ -41,7 +46,7 @@ export default function ContactUsSection() {
           <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
             Contact Us
           </h2>
-          <p className="text-gray-700 text-lg max-w-md leading-relaxed">
+          <p className="text-gray-800 text-lg max-w-md leading-relaxed">
             Need to get in touch?{" "}
             <span className="text-[#9B111E] font-semibold">No problem!</span>{" "}
             You can use our contact form to send us a message.
@@ -57,7 +62,7 @@ export default function ContactUsSection() {
                 <h4 className="text-lg font-semibold text-gray-900">
                   Our Office Address
                 </h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-700 text-sm leading-relaxed">
                   13C02, Block A, Zhaoxin Huijin Plaza
                   <br />
                   3085 Shennan East Road, Luohu, Shenzhen.
@@ -191,7 +196,7 @@ export default function ContactUsSection() {
             <img
               src="/contact.png"
               alt="Haixun contact representative"
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-full rounded-xl shadow-lg"
             />
           </div>
         </motion.div>
