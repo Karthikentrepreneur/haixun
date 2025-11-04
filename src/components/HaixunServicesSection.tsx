@@ -42,7 +42,7 @@ export default function HaixunServicesSection() {
       className="relative py-20 overflow-hidden min-h-screen"
       style={{
         background:
-          "linear-gradient(to top, #8B1617 0%, #A75858 25%, #C58A8A 60%, #EFE1E1 100%)",
+          "linear-gradient(to top, #9B111E 0%, #B24049 30%, #D58A8A 65%, #F2E6E6 100%)",
       }}
     >
       <div className="container mx-auto px-4">
@@ -69,7 +69,7 @@ export default function HaixunServicesSection() {
                       boxShadow: "0 16px 30px rgba(0,0,0,0.25)",
                     }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                    className="bg-white/95 backdrop-blur-sm rounded-2xl border border-gray-200 hover:border-[#8B1617] transition-all duration-300 h-full group cursor-pointer overflow-hidden"
+                    className="bg-white/95 backdrop-blur-sm rounded-2xl border border-gray-200 hover:border-[#9B111E] transition-all duration-300 h-full group cursor-pointer overflow-hidden"
                   >
                     {/* Image */}
                     <div className="relative w-full aspect-[16/9] overflow-hidden">
@@ -82,20 +82,20 @@ export default function HaixunServicesSection() {
                       <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors" />
 
                       {/* Icon Badge */}
-                      <div className="absolute top-3 right-3 w-11 h-11 bg-[#8B1617] rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                      <div className="absolute top-3 right-3 w-11 h-11 bg-[#9B111E] rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
                         <Icon className="w-5 h-5 text-white" />
                       </div>
                     </div>
 
                     {/* Content */}
                     <div className="p-6">
-                      <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#8B1617] transition-colors">
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#9B111E] transition-colors">
                         {t(service.titleKey)}
                       </h3>
                       <p className="text-gray-700 text-sm leading-relaxed line-clamp-3">
                         {t(service.descriptionKey)}
                       </p>
-                      <div className="mt-4 text-[#8B1617] font-medium text-sm group-hover:underline">
+                      <div className="mt-4 text-[#9B111E] font-medium text-sm group-hover:underline">
                         {t('services.readMore')} →
                       </div>
                     </div>
