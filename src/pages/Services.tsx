@@ -75,14 +75,13 @@ const Services: React.FC = () => {
   ];
 
   const RED = "#BC0018";
-  const DARK_RED = "#9B111E";
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <ScrollToTop />
       <Navigation />
       <main className="flex-grow pt-20">
-        {/* HERO (unchanged) */}
+        {/* HERO */}
         <section className="bg-gradient-to-r from-gc-dark-blue via-gc-blue to-gc-dark-blue text-white relative overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img src="/lovable-uploads/gp.jpg" alt="Services"
@@ -116,9 +115,9 @@ const Services: React.FC = () => {
           <div
             className="pointer-events-none absolute z-[1]"
             style={{
-              right: -220, bottom: -180, width: 1200, height: 320, background: DARK_RED,
+              right: -220, bottom: -180, width: 1200, height: 320, background: RED,
               transform: "rotate(-28deg)", borderRadius: 24,
-              filter: "drop-shadow(0 12px 24px rgba(155,17,30,0.28))"
+              filter: "drop-shadow(0 12px 24px rgba(188,0,24,0.28))"
             }}
           />
 
