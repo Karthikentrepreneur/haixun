@@ -10,7 +10,6 @@ const AboutSection: React.FC = () => {
     <section
       className="relative py-16 md:py-20 bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: "url('/bg01.png')",
         transform: "scaleX(-1)", // Flip background horizontally
       }}
     >
