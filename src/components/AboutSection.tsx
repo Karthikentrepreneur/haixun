@@ -10,19 +10,19 @@ const AboutSection: React.FC = () => {
     <section
       className="relative py-16 md:py-20 bg-cover bg-center bg-no-repeat"
       style={{
-        transform: "scaleX(-1)", // Flip background horizontally
+        transform: "scaleX(-1)", // flip background only
       }}
     >
-      {/* Keep text and content normal direction */}
+      {/* Re-flip content back to normal */}
       <div
         className="container mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10"
-        style={{ transform: "scaleX(-1)" }} // Reflip content back to normal
+        style={{ transform: "scaleX(-1)" }}
       >
         {/* LEFT — Image Composition */}
         <div className="relative flex justify-center lg:justify-start">
-          {/* Red L-frame block (behind images) */}
+          {/* Left red L-frame */}
           <div
-            className="absolute -top-8 -left-8 rounded-lg -z-10"
+            className="absolute -top-8 -left-8 rounded-lg -z-10 pointer-events-none"
             style={{
               width: "82%",
               height: "82%",
@@ -31,6 +31,20 @@ const AboutSection: React.FC = () => {
               borderStyle: "solid",
               borderColor: ACCENT,
               borderRightColor: "transparent",
+              borderBottomColor: "transparent",
+            }}
+          />
+          {/* Right red L-frame (mirrored) */}
+          <div
+            className="absolute -top-8 -right-8 rounded-lg -z-10 pointer-events-none"
+            style={{
+              width: "82%",
+              height: "82%",
+              borderTopRightRadius: "0.75rem",
+              borderWidth: "20px",
+              borderStyle: "solid",
+              borderColor: ACCENT,
+              borderLeftColor: "transparent",
               borderBottomColor: "transparent",
             }}
           />
@@ -48,12 +62,10 @@ const AboutSection: React.FC = () => {
               className="rounded-xl shadow-xl object-cover w-full h-[320px] md:h-[380px] lg:h-[420px] mt-8 -ml-2"
             />
 
-            {/* Centered round logo */}
+            {/* Centered round logo bridging both images */}
             <div
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-28 h-28 md:w-32 md:h-32 rounded-full bg-white shadow-2xl border-4"
-              style={{
-                borderColor: ACCENT,
-              }}
+              style={{ borderColor: ACCENT }}
             >
               <img
                 src="/haixun-logo.svg"
