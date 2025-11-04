@@ -39,10 +39,10 @@ export default function HaixunServicesSection() {
 
   return (
     <section
-      className="relative py-20 overflow-hidden"
+      className="relative py-20 overflow-hidden min-h-screen"
       style={{
         background:
-          "linear-gradient(to top, #A33C3D 0%, #8B1617 50%, #fafafa 100%)",
+          "linear-gradient(to top, #8B1617 0%, #A75858 25%, #C58A8A 60%, #EFE1E1 100%)",
       }}
     >
       <div className="container mx-auto px-4">
@@ -69,7 +69,7 @@ export default function HaixunServicesSection() {
                       boxShadow: "0 16px 30px rgba(0,0,0,0.25)",
                     }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                    className="bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200 hover:border-[#8B1617] transition-all duration-300 h-full group cursor-pointer overflow-hidden"
+                    className="bg-white/95 backdrop-blur-sm rounded-2xl border border-gray-200 hover:border-[#8B1617] transition-all duration-300 h-full group cursor-pointer overflow-hidden"
                   >
                     {/* Image */}
                     <div className="relative w-full aspect-[16/9] overflow-hidden">
