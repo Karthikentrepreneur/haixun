@@ -83,7 +83,7 @@ const Footer = () => {
         <div className="h-1 bg-gradient-to-r from-white/50 via-white/30 to-white/50 rounded-full mb-8" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 lg:gap-4">
-          {/* Column 1 */}
+          {/* Column 1: Logo & About */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -91,7 +91,8 @@ const Footer = () => {
             variants={footerAnim}
             className="flex flex-col items-start"
           >
-            <div className="mb-4">
+            {/* Logo with white border */}
+            <div className="mb-4 p-2 rounded-xl border-2 border-white/80 bg-white/10 backdrop-blur-sm inline-block shadow-lg">
               <img
                 src="/haixun-logo.svg"
                 alt="Haixun Global"
@@ -99,6 +100,7 @@ const Footer = () => {
                 loading="lazy"
               />
             </div>
+
             <h3 className="text-lg font-semibold mb-2 text-white">
               Haixun Global Co., Ltd
             </h3>
@@ -109,7 +111,7 @@ const Footer = () => {
             </p>
           </motion.div>
 
-          {/* Column 2 */}
+          {/* Column 2: Useful Links */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -118,9 +120,7 @@ const Footer = () => {
             transition={{ delay: 0.2 }}
             className="flex flex-col items-start md:items-end lg:items-start lg:pl-10"
           >
-            <h3 className="font-bold text-xl text-white mb-4">
-              Useful Links
-            </h3>
+            <h3 className="font-bold text-xl text-white mb-4">Useful Links</h3>
             <div className="flex flex-col gap-3">
               {[
                 { name: "Home", path: "/" },
@@ -142,7 +142,7 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Column 3 */}
+          {/* Column 3: Contact Info (slider) */}
           <motion.div
             initial="hidden"
             whileInView="visible"
