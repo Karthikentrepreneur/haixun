@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -10,11 +9,8 @@ const AboutSection: React.FC = () => {
   return (
     <section
       className="relative py-16 md:py-20 bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: "url('/bg01.png')",
-      }}
+      style={{}}
     >
-      {/* Removed dark/grey overlay */}
       <div className="container mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
         {/* LEFT — Image Composition */}
         <div className="relative flex justify-center lg:justify-start">
@@ -71,7 +67,7 @@ const AboutSection: React.FC = () => {
             ABOUT US
           </p>
 
-          <p className="mt-5 text-white max-w-xl">
+          <p className="mt-5 text-gray-700 max-w-xl">
             <strong>Haixun Global Shenzhen</strong> leverages over 30 years of
             expertise in logistics, including sea, land, air transportation,
             customs declaration, warehousing, and distribution. The Group has
@@ -79,7 +75,7 @@ const AboutSection: React.FC = () => {
             <strong>China, India, Malaysia, the UAE</strong>, and beyond.
           </p>
 
-          <p className="mt-5 text-white max-w-xl">
+          <p className="mt-5 text-gray-700 max-w-xl">
             Established in <strong>2019</strong>, Haixun Global Shenzhen upholds
             the Group’s commitment to integrity, customer satisfaction, and
             rapid response, ensuring a reliable and customer-focused service
@@ -93,10 +89,10 @@ const AboutSection: React.FC = () => {
                 <Globe2 className="w-8 h-8" style={{ color: ACCENT }} />
               </div>
               <div>
-                <h4 className="font-bold text-white text-lg">
+                <h4 className="font-bold text-gray-900 text-lg">
                   Fast Worldwide Delivery
                 </h4>
-                <p className="text-white/90 text-sm">
+                <p className="text-gray-600 text-sm">
                   Our vast global network ensures your cargo reaches destinations
                   on schedule.
                 </p>
@@ -108,10 +104,10 @@ const AboutSection: React.FC = () => {
                 <ShieldCheck className="w-8 h-8" style={{ color: ACCENT }} />
               </div>
               <div>
-                <h4 className="font-bold text-white text-lg">
+                <h4 className="font-bold text-gray-900 text-lg">
                   Safe And Secure Delivery
                 </h4>
-                <p className="text-white/90 text-sm">
+                <p className="text-gray-600 text-sm">
                   From pickup to final drop-off, we maintain strict safety and
                   compliance standards.
                 </p>
@@ -139,8 +135,8 @@ const AboutSection: React.FC = () => {
                   <Phone className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm text-white/80">Need Help?</p>
-                  <p className="text-lg font-bold text-white">
+                  <p className="text-sm text-gray-600">Need Help?</p>
+                  <p className="text-lg font-bold text-gray-900">
                     +86 75582222447
                   </p>
                 </div>
