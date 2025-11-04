@@ -38,11 +38,13 @@ export default function HaixunServicesSection() {
   ];
 
   return (
-    <section className="relative py-20 overflow-hidden">
-      {/* 🔴 Gradient from bottom to top */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#8B1617] via-[#a11c1d] to-transparent z-0" />
-
-      <div className="container mx-auto px-4 relative z-10">
+    <section
+      className="relative py-20 overflow-hidden"
+      style={{
+        background: "linear-gradient(to top, #8B1617 0%, #a33c3d 60%, #fafafa 100%)",
+      }}
+    >
+      <div className="container mx-auto px-4">
         {/* Section Header */}
         <ScrollAnimation className="text-center mb-14">
           <h2 className="font-extrabold text-gray-900 text-4xl md:text-5xl mb-4">
@@ -54,7 +56,7 @@ export default function HaixunServicesSection() {
         </ScrollAnimation>
 
         {/* 3x3 Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
