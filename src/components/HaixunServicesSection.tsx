@@ -38,17 +38,17 @@ export default function HaixunServicesSection() {
   ];
 
   return (
-    <section className="relative py-20 overflow-hidden bg-[#8B1617]">
-      {/* 🔴 Full red gradient overlay background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#8B1617] via-[#a11c1d] to-[#8B1617] opacity-95 z-0" />
+    <section className="relative py-20 overflow-hidden">
+      {/* 🔴 Gradient from bottom to top */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#8B1617] via-[#a11c1d] to-transparent z-0" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <ScrollAnimation className="text-center mb-14">
-          <h2 className="font-extrabold text-white text-4xl md:text-5xl mb-4">
+          <h2 className="font-extrabold text-gray-900 text-4xl md:text-5xl mb-4">
             {t("services.title")}
           </h2>
-          <p className="text-lg text-gray-200 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
             {t("services.subtitle")}
           </p>
         </ScrollAnimation>
@@ -63,12 +63,12 @@ export default function HaixunServicesSection() {
                   <motion.div
                     whileHover={{
                       y: -10,
-                      boxShadow: "0 16px 30px rgba(0,0,0,0.3)",
+                      boxShadow: "0 16px 30px rgba(0,0,0,0.25)",
                     }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                     className="bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200 hover:border-[#8B1617] transition-all duration-300 h-full group cursor-pointer overflow-hidden"
                   >
-                    {/* Image with Icon */}
+                    {/* Image */}
                     <div className="relative w-full aspect-[16/9] overflow-hidden">
                       <img
                         src={service.image}
