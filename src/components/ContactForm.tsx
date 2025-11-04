@@ -29,7 +29,7 @@ export default function ContactUsSection() {
     <section
       className="py-20"
       style={{
-        background: "#F5EAEA", // Soft rose white across full section
+        backgroundColor: "#F5EAEA", // 🌸 Full soft rose white background
       }}
     >
       <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
@@ -52,7 +52,7 @@ export default function ContactUsSection() {
 
           <div className="space-y-6">
             {/* Office */}
-            <div className="flex items-start gap-4 bg-white/60 p-4 rounded-xl shadow-sm">
+            <div className="flex items-start gap-4 bg-white p-5 rounded-xl shadow-sm border border-[#9B111E]/10">
               <div className="w-12 h-12 rounded-full bg-[#9B111E]/10 flex items-center justify-center">
                 <MapPin className="w-6 h-6 text-[#9B111E]" />
               </div>
@@ -69,7 +69,7 @@ export default function ContactUsSection() {
             </div>
 
             {/* Email */}
-            <div className="flex items-start gap-4 bg-white/60 p-4 rounded-xl shadow-sm">
+            <div className="flex items-start gap-4 bg-white p-5 rounded-xl shadow-sm border border-[#9B111E]/10">
               <div className="w-12 h-12 rounded-full bg-[#9B111E]/10 flex items-center justify-center">
                 <Mail className="w-6 h-6 text-[#9B111E]" />
               </div>
@@ -85,7 +85,7 @@ export default function ContactUsSection() {
             </div>
 
             {/* Phone */}
-            <div className="flex items-start gap-4 bg-white/60 p-4 rounded-xl shadow-sm">
+            <div className="flex items-start gap-4 bg-white p-5 rounded-xl shadow-sm border border-[#9B111E]/10">
               <div className="w-12 h-12 rounded-full bg-[#9B111E]/10 flex items-center justify-center">
                 <Phone className="w-6 h-6 text-[#9B111E]" />
               </div>
@@ -108,7 +108,7 @@ export default function ContactUsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="bg-white/90 p-10 rounded-2xl shadow-xl border border-[#9B111E]/10 backdrop-blur-sm"
+          className="bg-white p-10 rounded-2xl shadow-xl border border-[#9B111E]/20"
         >
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
@@ -163,7 +163,7 @@ export default function ContactUsSection() {
 
             <Button
               type="submit"
-              className="w-full bg-[#9B111E] hover:bg-[#7F0E18] text-white font-semibold text-lg py-6 flex items-center justify-center gap-2 shadow-md"
+              className="w-full bg-[#9B111E] hover:bg-[#7F0E18] text-white font-semibold text-lg py-6 flex items-center justify-center gap-2"
             >
               <Send className="w-5 h-5" />
               Send Message
@@ -190,7 +190,7 @@ export default function ContactUsSection() {
           viewport={{ once: true }}
           className="flex justify-center items-center"
         >
-          <div className="w-full max-w-md bg-white/60 p-4 rounded-2xl shadow-lg">
+          <div className="w-full max-w-md bg-white p-5 rounded-2xl shadow-lg border border-[#9B111E]/10">
             <img
               src="/contact.png"
               alt="Haixun contact representative"
