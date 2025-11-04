@@ -13,9 +13,7 @@ const AboutSection: React.FC = () => {
         backgroundImage: "url('/bg01.png')",
       }}
     >
-      {/* Optional overlay for readability */}
-      <div className="absolute inset-0 bg-black/40"></div>
-
+      {/* Removed dark/grey overlay */}
       <div className="container mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
         {/* LEFT — Image Composition */}
         <div className="relative flex justify-center lg:justify-start">
@@ -97,9 +95,9 @@ const AboutSection: React.FC = () => {
                 <h4 className="font-bold text-white text-lg">
                   Fast Worldwide Delivery
                 </h4>
-                <p className="text-gray-200 text-sm">
-                  Our vast global network ensures your cargo reaches
-                  destinations on schedule.
+                <p className="text-white/90 text-sm">
+                  Our vast global network ensures your cargo reaches destinations
+                  on schedule.
                 </p>
               </div>
             </div>
@@ -112,7 +110,7 @@ const AboutSection: React.FC = () => {
                 <h4 className="font-bold text-white text-lg">
                   Safe And Secure Delivery
                 </h4>
-                <p className="text-gray-200 text-sm">
+                <p className="text-white/90 text-sm">
                   From pickup to final drop-off, we maintain strict safety and
                   compliance standards.
                 </p>
@@ -140,7 +138,7 @@ const AboutSection: React.FC = () => {
                   <Phone className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-200">Need Help?</p>
+                  <p className="text-sm text-white/80">Need Help?</p>
                   <p className="text-lg font-bold text-white">
                     +86 75582222447
                   </p>
